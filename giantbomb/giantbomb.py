@@ -1,4 +1,3 @@
-import urllib2
 import requests
 from collections import Iterable
 
@@ -14,7 +13,6 @@ class GiantBombError(Exception):
     def __str__(self):
         return repr(self.msg)
 
-
 class Api:
     def __init__(self, api_key, user_agent):
         self.api_key = api_key
@@ -24,13 +22,13 @@ class Api:
 
     @staticmethod
     def defaultRepr(obj):
-        return "<%s: %s>".format(obj.id, obj.name)
+        return "<{}: {}>".format(obj.id, obj.name)
 
     def validate_response(self, resp):
         if resp['status_code'] == 1:
             return resp['results']
         else:
-            raise GiantBombError('Error code %s: %s'.format(
+            raise GiantBombError('Error code {}: {}}'.format(
                 resp['status_code'],
                 resp['error']
             ))
@@ -42,7 +40,7 @@ class Api:
         url_parameters.update(parameters)
 
         response = requests.get(url, headers=self.headers,
-                                params=parameters)
+                                params=url_parameters)
 
         return self.validate_response(response.json())
 
@@ -51,23 +49,23 @@ class Api:
         parameters = {
             'resources': 'game',
             'query': query,
-            'field_list': [
+            'field_list': ",".join([
                 'id',
                 'name',
                 'image'
-            ],
+            ]),
             'offset': offset
         }
         results = self.perform_request(url_path, parameters)
 
         return [SearchResult.NewFromJsonDict(x) for x in results]
 
-    def getGame(self, id):
-        if type(id) is int:
+    def get_game(self, id):
+        if not type(id) is int:
             id = id.id
-        url_path = 'game/' + id + '/'
+        url_path = 'game/' + str(id) + '/'
         parameters = {
-            'field_list': [
+            'field_list': ",".join([
                 'id',
                 'name',
                 'deck',
@@ -84,55 +82,57 @@ class Api:
                 'site_detail_url',
                 'date_added',
                 'date_last_updated'
-            ],
+            ]),
         }
         results = self.perform_request(url_path, parameters)
 
         return Game.NewFromJsonDict(results)
 
-    def getGames(self, plat, offset=0):
-        if type(plat) is int:
+    def list_games(self, plat, offset=0):
+        if not type(plat) is int:
             plat = plat.id
 
         url_path = 'games/'
         parameters = {
             'platforms': plat,
-            'field_list': [
+            'field_list': ",".join([
                 'id',
                 'name',
                 'image'
-            ],
+            ]),
             'offset': offset
         }
         results = self.perform_request(url_path, parameters)
 
         return [SearchResult.NewFromJsonDict(x) for x in results]
 
-    def getPlatform(self, id):
-        url_path = 'platform/'
+    def get_platform(self, id):
+        if not type(id) is int:
+            id = id.id
+        url_path = 'platform/' + str(id) + '/'
         parameters = {
-            'field_list': [
+            'field_list': ",".join([
                 'id',
                 'name',
                 'abbreviation',
                 'deck',
                 'api_detail_url',
                 'image'
-            ]
+            ])
         }
 
         results = self.perform_request(url_path, parameters)
         return Platform.NewFromJsonDict(results)
 
-    def getPlatforms(self, offset=0):
+    def list_platforms(self, offset=0):
         url_path = 'platforms/'
         parameters = {
-            'field_list': [
+            'field_list': ",".join([
                 'id',
                 'name',
                 'abbreviation',
                 'deck'
-            ],
+            ]),
             'offset': offset
         }
         results = self.perform_request(url_path, parameters)

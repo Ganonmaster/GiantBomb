@@ -21,46 +21,39 @@ Basic usage:
 **Current Methods:**  
 
  * search(str, offset)
- * getGame(game_id)
- * getGames(platform_id, offset)
- * getVideo(video_id)
- * getPlatform(platform_id)
- * getPlatforms(offset)
- * getFranchise(franchise_id)
- * getFranchises(offset)
+ * get_game(game_id)
+ * list_games(platform_id, offset)
+ * get_platform(platform_id)
+ * list_platforms(offset)
  
 *Everything returns an object:*  
 
 **Examples:**  
 
-    import giantbomb  
-    gb = giantbomb.Api('YOUR_KEY', 'YOUR_USER_AGENT')
-    
-    games = gb.getGames(94, 12300) // 94 = PC
-    print games
-    
-    >>> [<29220: Zero Gear>, <29234: Pro Cycling Manager: Season 2010>,
-         <29238: Allods Online>, <29240: Hammerfight>, <29247: Sacraboar>,
-         <29249: POWDER>, <29257: Grand Fantasia>, ...]
-    
-    ------------------------------------------------------------------------------
-    
-    results = gb.search('call of duty')
-    print results
-    
-    >>> [<26423: Call of Duty: Black Ops>, <2133: Call of Duty 4: Modern Warfare>,
-         <20777: Call of Duty: World at War>, ...]
-    
-    game = gb.getGame(26423) // or gb.getGame(results[0])
-    for p in game.platforms:
-        print p.name
-        
-    >>> PlayStation 3
-        Wii
-        Nintendo DS
-        PlayStation Network (PS3)
-        Xbox 360
-        PC
+```python
+from giantbomb import giantbomb
+gb = giantbomb.Api('<YOUR API KEY>', 'API test')
+
+# Search for games
+search_results = gb.search('Jet Set Radio')
+print(search_results)
+# Outputs: [<20096: Jet Grind Radio>, <12117: JSRF: Jet Set Radio Future>, <40601: JetSet Secrets>, <17531: Jet Set Willy: Online>, <42406: Radio the Universe>, <5005: Jet Set Willy>, <2633: Jet>, <46238: Jet-Getters>, <73975: SoulSet>, <47155: Jet Gunner>]
+
+# Get Game data
+game_data = gb.get_game(20096)
+print(game_data)
+# Outputs: 
+
+# List Platforms
+platforms = gb.list_platforms()
+print(platforms)
+# Outputs: [<1: Amiga>, <3: Game Boy>, <4: Game Boy Advance>, <5: Game Gear>...]
+
+# Get a specific platform
+platform = gb.get_platform(37)
+print(platform)
+# Outputs: <37: Dreamcast>
+```
 
 Yep, that's it!  
 Hugs!
