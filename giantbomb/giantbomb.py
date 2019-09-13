@@ -13,6 +13,7 @@ class GiantBombError(Exception):
     def __str__(self):
         return repr(self.msg)
 
+
 class Api:
     def __init__(self, api_key, user_agent):
         self.api_key = api_key
