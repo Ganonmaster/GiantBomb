@@ -11,7 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Python wrapper for Giantbomb API!
 
-**Get your API Key at http://giantbomb.com/api/**
+**Get your API Key at https://giantbomb.com/api/**
 
 Basic usage:  
 
