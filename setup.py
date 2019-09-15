@@ -29,4 +29,5 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: MIT License",
     ],
+    install_requires=['requests'],
 )
