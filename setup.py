@@ -29,5 +29,5 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: MIT License",
     ],
-    install_requires=['requests>=2.22.0'],
+    install_requires=['requests>=2.22.0', 'dacite'],
 )
