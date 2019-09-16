@@ -116,29 +116,6 @@ class Api:
 
         return [from_dict(data_class=Game, data=x) for x in results]
 
-    def list_releases(self, game):
-        if not type(game) is int:
-            game = game.id
-
-        url_path = 'releases/'
-        parameters = {
-            'game': game,
-            'field_list': ",".join([
-                'aliases',
-                'deck',
-                'description',
-                'id',
-                'guid',
-                'name',
-                'platforms',
-                'image'
-            ]),
-            'offset': offset
-        }
-        results = self.perform_request(url_path, parameters)
-
-        return [from_dict(data_class=SearchResult, data=results) for x in results]
-
     def get_platform(self, id):
         if not type(id) is int:
             id = id.id
