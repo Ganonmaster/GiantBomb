@@ -5,4 +5,6 @@ _matrix/
 *.db
 .project
 .pydevproject
-giantbomb.egg-info/
+build/
+dist/
+giantbomb_redux.egg-info/

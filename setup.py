@@ -12,16 +12,17 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 setup(
-    name = "giantbomb",
+    name = "giantbomb-redux",
     version = giantbomb.__version__,
     author = giantbomb.__author__,
-    author_email = "xupisco@gmail.com",
+    author_email = "hidde@hiddejansen.com",
     description = ("A Python wrapper for the Giantbomb API."),
     license = "MIT",
     keywords = "giantbomb api wrapper",
-    url = "https://github.com/xupisco/GiantBomb",
+    url = "https://github.com/jansenh/GiantBomb-redux",
     packages=['giantbomb'],
     long_description=read('README.md'),
+    long_description_content_type="text/markdown",
     classifiers=[
         "Environment :: Console",
         "Intended Audience :: Developers",
@@ -29,5 +30,6 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: MIT License",
     ],
-    install_requires=['requests>=2.22.0', 'dacite'],
+    install_requires=['requests', 'dacite'],
+    python_requires=">=3.7"
 )

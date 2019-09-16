@@ -1,23 +1,17 @@
-## Python wrapper for Giantbomb API!
+# GiantBomb-Redux
+
+A modern Python wrapper for the Giantbomb API. Forked from [xupisco](https://github.com/xupisco)'s initial API wrapper and since (poorly) rewritten for Python 3.7.
+
+Please use it to make cool stuff, and feel free to slide into the issue tracker if you have suggestions for improvements. Pull requests welcome!
 
 **Get your API Key at https://giantbomb.com/api/**
 
-Basic usage:  
+## Usage:  
 
     import giantbomb  
     gb = giantbomb.Api('YOUR_KEY', 'YOUR_USER_AGENT')
-    
-**Current Methods:**  
 
- * search(str, offset)
- * get_game(game_id)
- * list_games(platform_id, offset)
- * get_platform(platform_id)
- * list_platforms(offset)
- 
-*Everything returns an object:*  
-
-**Examples:**  
+## Examples:
 
 ```python
 from giantbomb import giantbomb
@@ -43,6 +37,3 @@ platform = gb.get_platform(37)
 print(platform)
 # Outputs: <37: Dreamcast>
 ```
-
-Yep, that's it!  
-Hugs!

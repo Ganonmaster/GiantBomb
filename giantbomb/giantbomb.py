@@ -4,7 +4,7 @@ from giantbomb.dataclasses import Platform, Release, Game, SearchResult
 
 __author__ = "Leandro Voltolino <xupisco@gmail.com>"
 __author__ = "Hidde Jansen <hidde@hiddejansen.com>"
-__version__ = "0.7"
+__version__ = "1.0.0"
 
 
 class GiantBombError(Exception):
