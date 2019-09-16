@@ -156,6 +156,25 @@ class Api:
 
         return [from_dict(data_class=SearchResult, data=x) for x in results]
 
+    def get_release(self, id):
+        if not type(id) is int:
+            id = id.id
+        url_path = 'release/' + str(id) + '/'
+        parameters = {
+            'field_list': ",".join([
+                'id',
+                'name',
+                'deck',
+                'region',
+                'developers',
+                'site_detail_url',
+                'api_detail_url',
+            ])
+        }
+
+        results = self.perform_request(url_path, parameters)
+        return from_dict(data_class=Release, data=results)
+
 
 @dataclass
 class Image:
@@ -182,6 +201,24 @@ class Platform:
 
 
 @dataclass
+class Region:
+    id: int
+    name: str = ''
+    api_detail_url: str = ''
+
+
+@dataclass
+class Release:
+    id: int
+    name: str = ''
+    deck: Optional[str] = ''
+    region: Optional[Region] = None
+    developers: Optional[List[str]] = ''
+    site_detail_url: Optional[str] = ''
+    api_detail_url: Optional[str] = ''
+
+
+@dataclass
 class Game:
     id: int = None
     name: str = ''
@@ -190,6 +227,7 @@ class Game:
     developers: Optional[list] = None
     publishers: Optional[list] = None
     franchises: Optional[list] = None
+    releases: Optional[List[Union[Release, None]]] = None
     images: Optional[List[Union[Image, None]]] = None
     image: Image = None
     genres: Optional[list] = None
@@ -199,7 +237,6 @@ class Game:
     site_detail_url: Optional[str] = ''
     date_added_gb: Optional[str] = ''
     date_last_updated_gb: Optional[str] = ''
-    releases: Optional[list] = None
 
 
 @dataclass
