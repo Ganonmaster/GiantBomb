@@ -38,6 +38,8 @@ class Release:
     id: int
     name: str = ''
     deck: Optional[str] = ''
+    description: Optional[str] = ''
+    platform: Optional[Platform] = None
     region: Optional[Region] = None
     developers: Optional[List[str]] = ''
     site_detail_url: Optional[str] = ''

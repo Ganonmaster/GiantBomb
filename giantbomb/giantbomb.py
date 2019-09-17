@@ -163,8 +163,10 @@ class Api:
                 'id',
                 'name',
                 'deck',
+                'description',
                 'region',
                 'developers',
+                'platform',
                 'site_detail_url',
                 'api_detail_url',
             ])
