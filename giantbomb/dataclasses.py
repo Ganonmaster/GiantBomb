@@ -41,6 +41,7 @@ class Release:
     description: Optional[str] = ''
     platform: Optional[Platform] = None
     region: Optional[Region] = None
+    release_date: Optional[str] = ''
     developers: Optional[List[str]] = ''
     site_detail_url: Optional[str] = ''
     api_detail_url: Optional[str] = ''

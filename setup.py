@@ -19,7 +19,7 @@ setup(
     description = ("A Python wrapper for the Giantbomb API."),
     license = "MIT",
     keywords = "giantbomb api wrapper",
-    url = "https://github.com/jansenh/GiantBomb-redux",
+    url = "https://github.com/ganonmaster/GiantBomb-redux",
     packages=['giantbomb'],
     long_description=read('README.md'),
     long_description_content_type="text/markdown",
