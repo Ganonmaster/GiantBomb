@@ -44,6 +44,8 @@ class Release:
     developers: Optional[List[str]] = ''
     site_detail_url: Optional[str] = ''
     api_detail_url: Optional[str] = ''
+    date_added_gb: Optional[str] = ''
+    date_last_updated_gb: Optional[str] = ''
 
 
 @dataclass

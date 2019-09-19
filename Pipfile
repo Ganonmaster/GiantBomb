@@ -10,6 +10,7 @@ flake8 = "*"
 requests = "*"
 pytest = "*"
 dacite = "*"
+twine = "*"
 
 [requires]
 python_version = "3.7"
