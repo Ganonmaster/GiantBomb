@@ -4,7 +4,7 @@ from giantbomb.dataclasses import Platform, Release, Game, SearchResult
 
 __author__ = "Leandro Voltolino <xupisco@gmail.com>"
 __author__ = "Hidde Jansen <hidde@hiddejansen.com>"
-__version__ = "1.0.1a"
+__version__ = "1.0.3"
 
 
 class GiantBombError(Exception):
@@ -167,6 +167,7 @@ class Api:
                 'name',
                 'deck',
                 'description',
+                'image',
                 'region',
                 'developers',
                 'platform',

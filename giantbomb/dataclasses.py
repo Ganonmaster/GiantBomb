@@ -39,6 +39,7 @@ class Release:
     name: str = ''
     deck: Optional[str] = ''
     description: Optional[str] = ''
+    image: Image = None
     platform: Optional[Platform] = None
     region: Optional[Region] = None
     release_date: Optional[str] = ''
