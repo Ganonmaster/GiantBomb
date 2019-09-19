@@ -44,8 +44,8 @@ class Release:
     developers: Optional[List[str]] = ''
     site_detail_url: Optional[str] = ''
     api_detail_url: Optional[str] = ''
-    date_added_gb: Optional[str] = ''
-    date_last_updated_gb: Optional[str] = ''
+    date_added: Optional[str] = ''
+    date_last_updated: Optional[str] = ''
 
 
 @dataclass
@@ -65,8 +65,8 @@ class Game:
     videos: Optional[list] = None
     api_detail_url: Optional[str] = ''
     site_detail_url: Optional[str] = ''
-    date_added_gb: Optional[str] = ''
-    date_last_updated_gb: Optional[str] = ''
+    date_added: Optional[str] = ''
+    date_last_updated: Optional[str] = ''
 
 
 @dataclass
