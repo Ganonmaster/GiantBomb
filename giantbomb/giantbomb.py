@@ -4,7 +4,7 @@ from giantbomb.dataclasses import Platform, Release, Game, SearchResult
 
 __author__ = "Leandro Voltolino <xupisco@gmail.com>"
 __author__ = "Hidde Jansen <hidde@hiddejansen.com>"
-__version__ = "1.0.3"
+__version__ = "1.0.4"
 
 
 class GiantBombError(Exception):
@@ -51,11 +51,6 @@ class Api:
         parameters = {
             'resources': 'game',
             'query': query,
-            'field_list': ",".join([
-                'id',
-                'name',
-                'image'
-            ]),
             'offset': offset
         }
         results = self.perform_request(url_path, parameters)

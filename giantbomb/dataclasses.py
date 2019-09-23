@@ -114,3 +114,5 @@ class SearchResult:
     name: Optional[str] = ''
     api_detail_url: Optional[str] = ''
     image: Image = None
+    original_release_date: Optional[str] = ''
+    platforms: Optional[List[Platform]] = None
