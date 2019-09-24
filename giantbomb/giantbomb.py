@@ -1,6 +1,6 @@
 import requests
 from dacite import from_dict
-from giantbomb.dataclasses import Platform, Release, Game, SearchResult
+from giantbomb.dataclasses import Platform, Release, Game, SearchResult, Genre, Theme
 
 __author__ = "Leandro Voltolino <xupisco@gmail.com>"
 __author__ = "Hidde Jansen <hidde@hiddejansen.com>"
@@ -61,27 +61,7 @@ class Api:
         if not type(id) is int:
             id = id.id
         url_path = 'game/' + str(id) + '/'
-        parameters = {
-            'field_list': ",".join([
-                'id',
-                'name',
-                'deck',
-                'publishers',
-                'developers',
-                'franchises',
-                'image',
-                'images',
-                'genres',
-                'original_release_date',
-                'platforms',
-                'videos',
-                'releases',
-                'api_detail_url',
-                'site_detail_url',
-                'date_added',
-                'date_last_updated'
-            ]),
-        }
+        parameters = {}
         results = self.perform_request(url_path, parameters)
 
         return from_dict(data_class=Game, data=results)
@@ -93,16 +73,6 @@ class Api:
         url_path = 'games/'
         parameters = {
             'platforms': plat,
-            'field_list': ",".join([
-                'aliases',
-                'deck',
-                'description',
-                'id',
-                'guid',
-                'name',
-                'platforms',
-                'image'
-            ]),
             'offset': offset
         }
         results = self.perform_request(url_path, parameters)
@@ -176,3 +146,21 @@ class Api:
 
         results = self.perform_request(url_path, parameters)
         return from_dict(data_class=Release, data=results)
+
+    def list_genres(self, offset=0):
+        url_path = 'genres/'
+        parameters = {
+            'offset': offset
+        }
+        results = self.perform_request(url_path, parameters)
+
+        return [from_dict(data_class=Genre, data=x) for x in results]
+
+    def list_themes(self, offset=0):
+        url_path = 'themes/'
+        parameters = {
+            'offset': offset
+        }
+        results = self.perform_request(url_path, parameters)
+
+        return [from_dict(data_class=Theme, data=x) for x in results]

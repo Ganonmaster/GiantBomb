@@ -34,6 +34,15 @@ class Region:
 
 
 @dataclass
+class Theme:
+    id: int
+    name: str = ''
+    guid: Optional[str] = ''
+    site_detail_url: Optional[str] = ''
+    api_detail_url: Optional[str] = ''
+
+
+@dataclass
 class Release:
     id: int
     name: str = ''
@@ -51,10 +60,25 @@ class Release:
 
 
 @dataclass
+class Genre:
+    id: int
+    guid: Optional[str] = ''
+    name: Optional[str] = ''
+    deck: Optional[str] = ''
+    description: Optional[str] = ''
+    image: Image = None
+    api_detail_url: Optional[str] = ''
+    site_detail_url: Optional[str] = ''
+    date_added: Optional[str] = ''
+    date_last_updated: Optional[str] = ''
+
+
+@dataclass
 class Game:
     id: int = None
     name: str = ''
     deck: Optional[str] = ''
+    description: Optional[str] = ''
     platforms: Optional[List[Platform]] = None
     developers: Optional[list] = None
     publishers: Optional[list] = None
@@ -62,7 +86,8 @@ class Game:
     releases: Optional[List[Union[Release, None]]] = None
     images: Optional[List[Union[Image, None]]] = None
     image: Image = None
-    genres: Optional[list] = None
+    genres: Optional[List[Genre]] = None
+    themes: Optional[List[Theme]] = None
     original_release_date: Optional[str] = ''
     videos: Optional[list] = None
     api_detail_url: Optional[str] = ''
@@ -74,17 +99,15 @@ class Game:
 @dataclass
 class Franchise:
     id: int
+    guid: Optional[str] = ''
     name: Optional[str] = ''
     deck: Optional[str] = ''
-    api_detail_url: Optional[str] = ''
+    description: Optional[str] = ''
     image: Image = None
-
-
-@dataclass
-class Genre:
-    id: int
-    name: Optional[str] = ''
     api_detail_url: Optional[str] = ''
+    site_detail_url: Optional[str] = ''
+    date_added: Optional[str] = ''
+    date_last_updated: Optional[str] = ''
 
 
 @dataclass

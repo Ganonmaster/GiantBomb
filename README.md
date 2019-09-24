@@ -36,4 +36,9 @@ print(platforms)
 platform = gb.get_platform(37)
 print(platform)
 # Outputs: <37: Dreamcast>
+
+# List genres
+genres = gb.list_genres()
+print(genres[0])
+# Outputs: Genre(id=1, guid='3060-1', name='Action'...
 ```
