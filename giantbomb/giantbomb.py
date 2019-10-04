@@ -30,7 +30,7 @@ class Api:
         if resp['status_code'] == 1:
             return resp['results']
         else:
-            raise GiantBombError('Error code {}: {}}'.format(
+            raise GiantBombError('Error code {}: {}'.format(
                 resp['status_code'],
                 resp['error']
             ))

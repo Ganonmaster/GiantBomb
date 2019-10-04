@@ -88,6 +88,7 @@ class Game:
     image: Image = None
     genres: Optional[List[Genre]] = None
     themes: Optional[List[Theme]] = None
+    release_date: Optional[str] = ''
     original_release_date: Optional[str] = ''
     videos: Optional[list] = None
     api_detail_url: Optional[str] = ''
